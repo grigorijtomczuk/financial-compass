@@ -10,15 +10,14 @@ export default defineNuxtConfig({
 		typeCheck: true,
 	},
 
-	css: ["assets/styles/_reset.scss"],
+	css: ["assets/styles/reset.scss", "assets/styles/default.scss", "assets/styles/fonts.scss"],
 
 	vite: {
 		css: {
 			preprocessorOptions: {
 				scss: {
 					api: "modern",
-					additionalData: `@use "assets/styles/_variables.scss";
-									 @use "assets/styles/_default.scss";`,
+					additionalData: `@use "assets/styles/_variables.scss" as *;`,
 				},
 			},
 		},
@@ -45,17 +44,17 @@ export default defineNuxtConfig({
 				},
 				{
 					name: "apple-mobile-web-app-title",
-					content: "Title",
+					content: "Финансовый Компас",
 				},
 			],
 		},
 	},
 
 	pwa: {
-		devOptions: { enabled: false },
+		devOptions: { enabled: true },
 		manifest: {
-			theme_color: "#8936FF",
-			background_color: "#2EC6FE",
+			theme_color: "#FFFFFF",
+			background_color: "#FFFFFF",
 			orientation: "portrait",
 			display: "standalone",
 			lang: "ru",
