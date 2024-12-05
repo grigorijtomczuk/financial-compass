@@ -10,7 +10,7 @@ export default defineNuxtConfig({
 		typeCheck: true,
 	},
 
-	css: ["assets/styles/reset.scss", "assets/styles/common.scss", "assets/styles/fonts.scss"],
+	css: ["assets/styles/reset.scss", "assets/styles/fonts.scss", "assets/styles/common.scss"],
 
 	vite: {
 		css: {
@@ -50,9 +50,13 @@ export default defineNuxtConfig({
 		},
 	},
 
+	svgo: {
+		componentPrefix: "icon",
+	},
+
 	pwa: {
 		devOptions: {
-			enabled: false, // Leave false; otherwise, use private browsing to keep SW and storage clean automatically
+			enabled: true, // Leave false; otherwise, use private browsing to keep SW and storage clean automatically
 			suppressWarnings: true,
 		},
 

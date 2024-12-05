@@ -1,13 +1,9 @@
 <template>
 	<NuxtPwaManifest />
+	<NuxtLoadingIndicator color="#3477f6" :throttle="0" />
 	<NuxtPage />
 </template>
 
 <script setup lang="ts"></script>
 
-<style lang="scss">
-	h1 {
-		font-family: $font-main-normal;
-		text-align: center;
-	}
-</style>
+<style lang="scss"></style>
