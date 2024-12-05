@@ -1,5 +1,8 @@
 <template>
 	<h1>Index</h1>
+	<div style="height: 500px">
+		<SvgoAppIcon style="height: 100%" />
+	</div>
 </template>
 
 <script setup lang="ts"></script>
