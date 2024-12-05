@@ -10,7 +10,7 @@ export default defineNuxtConfig({
 		typeCheck: true,
 	},
 
-	css: ["assets/styles/reset.scss", "assets/styles/default.scss", "assets/styles/fonts.scss"],
+	css: ["assets/styles/reset.scss", "assets/styles/common.scss", "assets/styles/fonts.scss"],
 
 	vite: {
 		css: {
@@ -51,7 +51,14 @@ export default defineNuxtConfig({
 	},
 
 	pwa: {
-		devOptions: { enabled: true },
+		devOptions: {
+			enabled: false, // Leave false; otherwise, use private browsing to keep SW and storage clean automatically
+			suppressWarnings: true,
+		},
+
+		registerType: "autoUpdate",
+		workbox: { globPatterns: ["**/*.{js,css,html,ico,png,svg}"] },
+
 		manifest: {
 			theme_color: "#FFFFFF",
 			background_color: "#FFFFFF",
