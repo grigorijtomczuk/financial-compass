@@ -38,7 +38,7 @@ export default defineNuxtConfig({
 			},
 			token: { signInResponseTokenPointer: "/token/accessToken" },
 			pages: {
-				login: "/auth/login",
+				login: "/welcome",
 			},
 		},
 	},

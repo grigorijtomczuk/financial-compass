@@ -7,7 +7,7 @@
 				Простой и удобный трекер личных финансов, который поможет эффективно управлять доходами и расходами
 			</p>
 		</div>
-		<NuxtLink class="start-link common-link" to="/" draggable="false">Начать</NuxtLink>
+		<NuxtLink class="start-link common-link" to="/auth/login" draggable="false">Начать</NuxtLink>
 	</div>
 </template>
 

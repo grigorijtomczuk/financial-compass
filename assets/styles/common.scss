@@ -14,3 +14,29 @@ body {
 	color: $color-accent;
 	text-decoration: none;
 }
+
+.common-button {
+	border: none;
+	border-radius: 24px;
+	background-color: $color-accent;
+	padding: 24px 32px;
+	color: $color-foreground;
+	font-weight: 700;
+	font-size: 24px;
+	font-family: $font-main-normal;
+}
+
+.common-text-input {
+	border: none;
+	border-bottom: $color-secondary solid 2px;
+	border-radius: 0;
+	padding: 6px 6px;
+	padding-top: 12px;
+	width: 100%;
+	font-size: 16px;
+	font-family: $font-main-normal;
+
+	&::placeholder {
+		color: $color-secondary;
+	}
+}
