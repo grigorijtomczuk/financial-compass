@@ -3,7 +3,7 @@ export default defineNuxtConfig({
 	compatibilityDate: "2024-11-01",
 	devtools: { enabled: false },
 
-	modules: ["@vite-pwa/nuxt", "nuxt-svgo"],
+	modules: ["@vite-pwa/nuxt", "nuxt-svgo", "@sidebase/nuxt-auth"],
 
 	typescript: {
 		strict: true,
@@ -25,6 +25,22 @@ export default defineNuxtConfig({
 
 	svgo: {
 		componentPrefix: "icon",
+	},
+
+	auth: {
+		baseURL: "/api/auth",
+		provider: {
+			type: "local",
+			endpoints: {
+				signIn: { path: "/login", method: "post" },
+				signOut: { path: "/logout", method: "post" },
+				getSession: { path: "/session", method: "get" },
+			},
+			token: { signInResponseTokenPointer: "/token/accessToken" },
+			pages: {
+				login: "/auth/login",
+			},
+		},
 	},
 
 	app: {
