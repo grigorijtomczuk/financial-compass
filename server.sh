@@ -5,4 +5,5 @@ export NITRO_SSL_KEY="`cat /etc/ssl/private/financial-compass-app_ru.key`"
 export PORT=443
 export NODE_ENV=production
 
-exec pm2 start .output/server/index.mjs --name financial-compass
+pm2 stop financial-compass
+pm2 start .output/server/index.mjs --name financial-compass
