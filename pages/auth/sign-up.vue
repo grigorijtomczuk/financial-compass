@@ -5,7 +5,7 @@
 			<h1 class="heading">Финансовый Компас</h1>
 		</div>
 
-		<form class="form" action="">
+		<form class="form" :novalidate="true" @submit.prevent="signInWithCredentials">
 			<div class="form__inputs">
 				<input class="form__text-input common-text-input" placeholder="Логин" type="text" />
 				<input class="form__text-input common-text-input" placeholder="Пароль" type="password" />
@@ -17,7 +17,29 @@
 	</div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+	// import { useToast } from "vue-toastification";
+
+	const { signIn } = useAuth();
+
+	const login = ref("");
+	const password = ref("");
+
+	// const toast = useToast();
+
+	async function signInWithCredentials() {
+		const credentials = {
+			login: "login",
+			password: "pass",
+		};
+		try {
+			await signIn(credentials, { callbackUrl: "/", external: false });
+			// toast.success("Вход выполнен успешно!");
+		} catch (error) {
+			// toast.error("Неверные данные для входа.");
+		}
+	}
+</script>
 
 <style scoped lang="scss">
 	.container {

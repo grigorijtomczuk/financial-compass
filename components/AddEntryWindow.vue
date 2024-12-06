@@ -1,22 +1,19 @@
 <template>
-	<AppHeader />
-	<AddEntryButton />
 	<div class="container">
-		<h1>Цели и задачи</h1>
-		<img src="@/assets/images/goals.png" alt="" draggable="false" />
+		<img src="@/assets/images/add-entry.png" alt="" draggable="false" />
 	</div>
 </template>
 
-<script setup lang="ts">
-	definePageMeta({
-		middleware: "auth",
-	});
-</script>
+<script setup lang="ts"></script>
 
 <style scoped lang="scss">
 	.container {
-		width: 90%;
+		width: 100%;
 		margin: 0 auto;
+		position: absolute;
+		top: 0;
+		background-color: $color-background;
+		z-index: 120;
 	}
 
 	h1 {
@@ -32,6 +29,8 @@
 	}
 
 	img {
-		width: 100%;
+		width: 85%;
+		display: block;
+		margin: 0 auto;
 	}
 </style>

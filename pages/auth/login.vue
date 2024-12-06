@@ -40,8 +40,8 @@
 
 	async function signInWithCredentials() {
 		const credentials = {
-			login: login.value,
-			password: password.value,
+			login: "login",
+			password: "pass",
 		};
 		try {
 			await signIn(credentials, { callbackUrl: "/", external: false });

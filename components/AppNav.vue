@@ -21,6 +21,7 @@
 		bottom: 0;
 		width: 100%;
 		box-shadow: $shadow-intense;
+		background-color: $color-foreground;
 	}
 
 	.navbar {
