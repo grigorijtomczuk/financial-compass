@@ -5,18 +5,52 @@
 			<h1 class="heading">Финансовый Компас</h1>
 		</div>
 
-		<form class="form" action="">
+		<form class="form" :novalidate="true" @submit.prevent="signInWithCredentials">
 			<div class="form__inputs">
-				<input class="form__text-input common-text-input" placeholder="Логин" type="text" />
-				<input class="form__text-input common-text-input" placeholder="Пароль" type="password" />
+				<input
+					class="form__text-input common-text-input"
+					placeholder="Логин"
+					type="text"
+					v-model="login"
+					required
+				/>
+				<input
+					class="form__text-input common-text-input"
+					placeholder="Пароль"
+					type="password"
+					v-model="password"
+					required
+				/>
 				<NuxtLink class="form__sign-up-link common-link" to="/auth/sign-up">Регистрация</NuxtLink>
 			</div>
-			<button class="form__submit-button common-button">Войти</button>
+			<button class="form__submit-button common-button" type="submit">Войти</button>
 		</form>
 	</div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+	// import { useToast } from "vue-toastification";
+
+	const { signIn } = useAuth();
+
+	const login = ref("");
+	const password = ref("");
+
+	// const toast = useToast();
+
+	async function signInWithCredentials() {
+		const credentials = {
+			login: login.value,
+			password: password.value,
+		};
+		try {
+			await signIn(credentials, { callbackUrl: "/", external: false });
+			// toast.success("Вход выполнен успешно!");
+		} catch (error) {
+			// toast.error("Неверные данные для входа.");
+		}
+	}
+</script>
 
 <style scoped lang="scss">
 	.container {

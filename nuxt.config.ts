@@ -5,6 +5,8 @@ export default defineNuxtConfig({
 
 	modules: ["@vite-pwa/nuxt", "nuxt-svgo", "@sidebase/nuxt-auth"],
 
+	build: { transpile: ["jsonwebtoken"] },
+
 	typescript: {
 		strict: true,
 		typeCheck: true,
@@ -170,7 +172,7 @@ export default defineNuxtConfig({
 
 	pwa: {
 		devOptions: {
-			enabled: true, // Leave false; otherwise, use private browsing to keep SW and storage clean automatically
+			enabled: false, // Leave false; otherwise, use private browsing to keep SW and storage clean automatically
 			suppressWarnings: true,
 		},
 
