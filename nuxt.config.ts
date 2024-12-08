@@ -5,6 +5,8 @@ export default defineNuxtConfig({
 
 	modules: ["@vite-pwa/nuxt", "nuxt-svgo", "@sidebase/nuxt-auth"],
 
+	ssr: false,
+
 	build: { transpile: ["jsonwebtoken"] },
 
 	typescript: {
@@ -39,9 +41,7 @@ export default defineNuxtConfig({
 				getSession: { path: "/session", method: "get" },
 			},
 			token: { signInResponseTokenPointer: "/token/accessToken" },
-			pages: {
-				login: "/welcome",
-			},
+			pages: { login: "/welcome" },
 		},
 	},
 

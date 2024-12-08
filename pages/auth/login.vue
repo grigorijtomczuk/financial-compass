@@ -32,6 +32,7 @@
 	// import { useToast } from "vue-toastification";
 
 	const { signIn } = useAuth();
+	const { query } = useRoute();
 
 	const login = ref("");
 	const password = ref("");
@@ -44,7 +45,10 @@
 			password: "pass",
 		};
 		try {
-			await signIn(credentials, { callbackUrl: "/", external: false });
+			await signIn(credentials, {
+				callbackUrl: query.redirect?.toString() ?? "/",
+				external: false,
+			});
 			// toast.success("Вход выполнен успешно!");
 		} catch (error) {
 			// toast.error("Неверные данные для входа.");

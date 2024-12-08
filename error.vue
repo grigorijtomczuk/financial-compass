@@ -3,7 +3,7 @@
 		<div class="info-group">
 			<h1 class="heading">Произошла ошибка</h1>
 			<p class="subheading">
-				{{ error }}
+				{{ error?.statusCode }}
 			</p>
 		</div>
 		<NuxtLink class="start-link common-link" to="/" draggable="false">Вернуться</NuxtLink>
@@ -53,9 +53,9 @@
 	}
 
 	.subheading {
-		font-size: 16px;
+		font-size: 36px;
 		color: $color-secondary;
-		text-align: center;
+		text-align: left;
 	}
 
 	.start-link {

@@ -7,11 +7,15 @@
 				Простой и удобный трекер личных финансов, который поможет эффективно управлять доходами и расходами
 			</p>
 		</div>
-		<NuxtLink class="start-link common-link" to="/auth/login" draggable="false">Начать</NuxtLink>
+		<NuxtLink class="start-link common-link" :to="`/auth/login${passedQuery}`" draggable="false">Начать</NuxtLink>
 	</div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+	const { query } = useRoute();
+	const queryPairs = Object.keys(query).map((key) => `${key}=${query[key]}`);
+	const passedQuery = "?" + queryPairs.join("&");
+</script>
 
 <style scoped lang="scss">
 	.container {
