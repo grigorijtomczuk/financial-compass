@@ -9,6 +9,8 @@ export default defineNuxtConfig({
 
 	build: { transpile: ["jsonwebtoken"] },
 
+	spaLoadingTemplate: true,
+
 	typescript: {
 		strict: true,
 		typeCheck: true,

@@ -12,6 +12,14 @@
 </template>
 
 <script setup lang="ts">
+	definePageMeta({
+		layout: "fullscreen",
+		pageTransition: {
+			name: "page",
+			mode: "out-in",
+		},
+	});
+
 	const { query } = useRoute();
 	const queryPairs = Object.keys(query).map((key) => `${key}=${query[key]}`);
 	const passedQuery = "?" + queryPairs.join("&");

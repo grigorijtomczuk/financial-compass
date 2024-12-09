@@ -31,6 +31,14 @@
 <script setup lang="ts">
 	// import { useToast } from "vue-toastification";
 
+	definePageMeta({
+		layout: "fullscreen",
+		pageTransition: {
+			name: "page",
+			mode: "out-in",
+		},
+	});
+
 	const { signIn } = useAuth();
 	const { query } = useRoute();
 
