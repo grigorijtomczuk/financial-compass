@@ -14,6 +14,7 @@
 <script setup lang="ts">
 	definePageMeta({
 		layout: "fullscreen",
+		auth: false,
 		pageTransition: {
 			name: "page",
 			mode: "out-in",
@@ -61,6 +62,7 @@
 		font-size: 16px;
 		color: $color-secondary;
 		text-align: center;
+		line-height: 1.2;
 	}
 
 	.start-link {

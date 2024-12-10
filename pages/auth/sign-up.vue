@@ -22,6 +22,7 @@
 
 	definePageMeta({
 		layout: "fullscreen",
+		auth: false,
 		pageTransition: {
 			name: "page",
 			mode: "out-in",

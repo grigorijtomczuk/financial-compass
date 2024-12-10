@@ -33,6 +33,7 @@
 
 	definePageMeta({
 		layout: "fullscreen",
+		auth: false,
 		pageTransition: {
 			name: "page",
 			mode: "out-in",
@@ -55,7 +56,6 @@
 		try {
 			await signIn(credentials, {
 				callbackUrl: query.redirect?.toString() ?? "/",
-				external: false,
 			});
 			// toast.success("Вход выполнен успешно!");
 		} catch (error) {
