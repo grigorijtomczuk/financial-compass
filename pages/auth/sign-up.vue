@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-	// import { useToast } from "vue-toastification";
+	import { useToast } from "vue-toastification";
 
 	definePageMeta({
 		layout: "fullscreen",
@@ -30,11 +30,10 @@
 	});
 
 	const { signIn } = useAuth();
+	const toast = useToast();
 
 	const login = ref("");
 	const password = ref("");
-
-	// const toast = useToast();
 
 	async function signInWithCredentials() {
 		const credentials = {
@@ -43,9 +42,9 @@
 		};
 		try {
 			await signIn(credentials, { callbackUrl: "/", external: false });
-			// toast.success("Вход выполнен успешно!");
+			toast.success("Вход выполнен успешно!");
 		} catch (error) {
-			// toast.error("Неверные данные для входа.");
+			toast.error("Неверные данные для входа.");
 		}
 	}
 </script>

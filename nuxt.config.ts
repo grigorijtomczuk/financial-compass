@@ -1,3 +1,5 @@
+import { enabled } from "virtual:nuxt-pwa-configuration";
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 	compatibilityDate: "2024-11-01",
@@ -43,8 +45,24 @@ export default defineNuxtConfig({
 				signIn: { path: "/login", method: "post" },
 				signOut: { path: "/logout", method: "post" },
 				getSession: { path: "/session", method: "get" },
+				// signUp: {path:"/"}
 			},
-			token: { signInResponseTokenPointer: "/token/accessToken" },
+			token: {
+				signInResponseTokenPointer: "/token/accessToken",
+				maxAgeInSeconds: 60 * 60 * 24 * 30,
+				secureCookieAttribute: process.env.NODE_ENV === "production",
+				httpOnlyCookieAttribute: process.env.NODE_ENV === "production",
+			},
+			refresh: {
+				isEnabled: false,
+				token: {
+					signInResponseRefreshTokenPointer: "/token/refreshToken",
+					maxAgeInSeconds: 60 * 60 * 24 * 1,
+					// maxAgeInSeconds: 5,
+					secureCookieAttribute: process.env.NODE_ENV === "production",
+					httpOnlyCookieAttribute: process.env.NODE_ENV === "production",
+				},
+			},
 			pages: { login: "/welcome" },
 		},
 	},

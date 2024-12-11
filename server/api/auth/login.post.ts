@@ -1,6 +1,6 @@
 import { sign } from "jsonwebtoken";
 
-const refreshTokens: Record<number, Record<string, any>> = {};
+const refreshTokens: Record<string, Record<string, any>> = {};
 export const SECRET = process.env.AUTH_SECRET!;
 
 export default defineEventHandler(async (event) => {
@@ -13,15 +13,13 @@ export default defineEventHandler(async (event) => {
 	}
 
 	const expiresIn = "30d";
-	const refreshToken = Math.floor(Math.random() * (1000000000000000 - 1 + 1)) + 1;
+	const refreshToken = (Math.floor(Math.random() * (1000000000000000 - 1 + 1)) + 1).toString();
 	const { login } = body;
 	const user = {
 		login,
 	};
 
-	const accessToken = sign(user, SECRET, {
-		expiresIn,
-	});
+	const accessToken = sign(user, SECRET, { expiresIn });
 	refreshTokens[refreshToken] = {
 		accessToken,
 		user,
