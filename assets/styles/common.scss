@@ -1,7 +1,11 @@
 * {
-	-webkit-touch-callout: none;
+	-webkit-touch-callout: none; // Disable iOS Safari on-long-press link pop-out
 	-webkit-tap-highlight-color: transparent;
 	user-select: none;
+}
+
+*:focus-visible {
+	outline: none; // Disable User Agent on-focus outline
 }
 
 body {

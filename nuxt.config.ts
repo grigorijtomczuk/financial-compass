@@ -14,6 +14,7 @@ export default defineNuxtConfig({
 	typescript: {
 		strict: true,
 		typeCheck: true,
+		// tsConfig: { compilerOptions: { noImplicitAny: false } },
 	},
 
 	css: ["assets/styles/reset.scss", "assets/styles/fonts.scss", "assets/styles/common.scss"],
