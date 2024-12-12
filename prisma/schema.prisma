@@ -8,9 +8,9 @@ datasource db {
 }
 
 model User {
-    id       Int    @id @default(autoincrement())
-    login    String @unique
-    password String
+    id           Int    @id @default(autoincrement())
+    login        String @unique
+    passwordHash String
 
     tasks UserTask[]
 

@@ -40,10 +40,10 @@ export default defineNuxtConfig({
 		provider: {
 			type: "local",
 			endpoints: {
+				signUp: { path: "/sign-up", method: "post" },
 				signIn: { path: "/login", method: "post" },
 				signOut: { path: "/logout", method: "post" },
 				getSession: { path: "/session", method: "get" },
-				// signUp: {path:"/"}
 			},
 			token: {
 				signInResponseTokenPointer: "/token/accessToken",

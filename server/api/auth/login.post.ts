@@ -1,3 +1,6 @@
+import HttpStatusCodes from "http-status-codes";
+import { compare } from "bcrypt";
+import { getUserByLogin } from "@/server/db/users";
 import { sign } from "jsonwebtoken";
 
 const refreshTokens: Record<string, Record<string, any>> = {};
@@ -5,9 +8,20 @@ export const SECRET = process.env.AUTH_SECRET!;
 
 export default defineEventHandler(async (event) => {
 	const body = await readBody(event);
-	if (body.login !== "login" || body.password !== "pass") {
+	const candidate = await getUserByLogin({ login: body.login });
+
+	if (!candidate) {
 		throw createError({
-			statusCode: 403,
+			statusCode: HttpStatusCodes.NOT_FOUND,
+			statusMessage: "User not found",
+		});
+	}
+
+	const passwordMatched = await compare(body.password, candidate.passwordHash);
+
+	if (!passwordMatched) {
+		throw createError({
+			statusCode: HttpStatusCodes.FORBIDDEN,
 			statusMessage: "Unauthorized",
 		});
 	}

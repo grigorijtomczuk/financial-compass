@@ -5,7 +5,7 @@
 			<h1 class="heading">Финансовый Компас</h1>
 		</div>
 
-		<form class="form" :novalidate="true" @submit.prevent="signInWithCredentials">
+		<form class="form" novalidate @submit.prevent="signInWithCredentials">
 			<div class="form__inputs">
 				<input
 					class="form__text-input common-text-input"
@@ -50,8 +50,8 @@
 
 	async function signInWithCredentials() {
 		const credentials = {
-			login: "login",
-			password: "pass",
+			login: login.value,
+			password: password.value,
 		};
 		try {
 			await signIn(credentials, {

@@ -5,14 +5,29 @@
 			<h1 class="heading">Финансовый Компас</h1>
 		</div>
 
-		<form class="form" :novalidate="true" @submit.prevent="signInWithCredentials">
+		<form class="form" novalidate @submit.prevent="checkForm">
 			<div class="form__inputs">
-				<input class="form__text-input common-text-input" placeholder="Имя пользователя" type="text" />
-				<input class="form__text-input common-text-input" placeholder="Пароль" type="password" />
-				<input class="form__text-input common-text-input" placeholder="Повторите пароль" type="password" />
+				<input
+					class="form__text-input common-text-input"
+					placeholder="Имя пользователя"
+					type="text"
+					v-model="login"
+				/>
+				<input
+					class="form__text-input common-text-input"
+					placeholder="Пароль"
+					type="password"
+					v-model="password"
+				/>
+				<input
+					class="form__text-input common-text-input"
+					placeholder="Повторите пароль"
+					type="password"
+					v-model="passwordConfirm"
+				/>
 
 				<label class="form__checkbox-label">
-					<input class="form__checkbox-input common-checkbox-input" type="checkbox" required />
+					<input class="form__checkbox-input common-checkbox-input" type="checkbox" v-model="policyAgreed" />
 					<span class="form__checkbox-label-text">
 						Принимаю условия
 						<NuxtLink class="common-link" to="" @click.prevent="bottomSheetEula.open()">
@@ -228,6 +243,7 @@
 
 <script setup lang="ts">
 	import { useToast } from "vue-toastification";
+	import { isEmpty, escape } from "validator";
 
 	// @ts-ignore
 	import VueBottomSheet from "@webzlodimir/vue-bottom-sheet";
@@ -241,24 +257,73 @@
 		},
 	});
 
-	const { signIn } = useAuth();
+	const { signUp } = useAuth();
 	const toast = useToast();
 
 	const login = ref("");
 	const password = ref("");
+	const passwordConfirm = ref("");
+	const policyAgreed = ref(false);
+
 	const bottomSheetEula = ref<InstanceType<typeof VueBottomSheet>>();
 	const bottomSheetPrivacy = ref<InstanceType<typeof VueBottomSheet>>();
 
-	async function signInWithCredentials() {
+	// TODO: Better do that on server-side
+	function checkForm() {
+		let errors: {
+			field: string;
+			error: string;
+		}[] = new Array();
+
+		if (isEmpty(login.value)) {
+			errors.push({ field: "Имя пользователя", error: "Поле обязательное" });
+		} else {
+			if (login.value.length < 5) {
+				errors.push({ field: "Имя пользователя", error: "Минимум 5 символов" });
+			}
+		}
+
+		if (isEmpty(password.value)) {
+			errors.push({ field: "Пароль", error: "Поле обязательное" });
+		} else {
+			if (password.value.length < 5) {
+				errors.push({ field: "Пароль", error: "Минимум 5 символов" });
+			}
+		}
+
+		if (isEmpty(passwordConfirm.value)) {
+			errors.push({ field: "Повторите пароль", error: "Поле обязательное" });
+		} else {
+			if (password.value != passwordConfirm.value) {
+				errors.push({ field: "Пароли", error: "Пароли не совпадают" });
+			}
+		}
+
+		if (!policyAgreed.value) {
+			errors.push({ field: "EULA", error: "Необходимо согласие" });
+		}
+
+		if (errors.length > 0) {
+			let message = "";
+			errors.forEach((error) => {
+				message += `${error.field}: ${error.error.toLowerCase()}\n`;
+			});
+			toast.error(message);
+		} else {
+			signUpWithCredentials();
+		}
+	}
+
+	async function signUpWithCredentials() {
 		const credentials = {
-			login: "login",
-			password: "pass",
+			login: login.value,
+			password: password.value,
 		};
 		try {
-			await signIn(credentials, { callbackUrl: "/", external: false });
-			toast.success("Вход выполнен успешно!");
+			await signUp(credentials, { callbackUrl: "/" });
+			toast.success("Аккаунт успешно создан!");
 		} catch (error) {
-			toast.error("Неверные данные для входа.");
+			toast.error("Что-то пошло не так.");
 		}
 	}
 </script>

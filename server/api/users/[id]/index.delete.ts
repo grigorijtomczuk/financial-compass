@@ -1,15 +1,15 @@
 import { deleteUserById, getUserById } from "@/server/db/users";
 
-import { StatusCode } from "status-code-enum";
+import HttpStatusCodes from "http-status-codes";
 
 export default defineEventHandler(async (event) => {
 	const id = parseInt(getRouterParam(event, "id")!);
 	const candidate = await getUserById({ id });
 
 	if (!candidate) {
-		setResponseStatus(event, StatusCode.ClientErrorNotFound);
+		setResponseStatus(event, HttpStatusCodes.NOT_FOUND);
 		return {
-			status: StatusCode.ClientErrorNotFound,
+			status: HttpStatusCodes.NOT_FOUND,
 			message: "ClientErrorNotFound",
 		};
 	}
