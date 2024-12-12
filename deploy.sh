@@ -3,7 +3,7 @@
 set -a
 source .env.production &&
 
-npm ci &&
+npm ci --include dev &&
 npm run build &&
 # npx prisma migrate deploy &&
 
