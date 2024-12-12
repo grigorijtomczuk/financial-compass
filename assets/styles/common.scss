@@ -27,10 +27,11 @@ body {
 	color: $color-foreground;
 	font-weight: 700;
 	font-size: 24px;
-	font-family: $font-main-normal;
+	font-family: $font-main-rounded;
 }
 
 .common-text-input {
+	transition: $transition-normal;
 	border: none;
 	border-bottom: $color-secondary solid 2px;
 	border-radius: 0;
@@ -43,4 +44,16 @@ body {
 	&::placeholder {
 		color: $color-secondary;
 	}
+
+	&:focus {
+		background-color: $color-tertiary;
+		&::placeholder {
+			opacity: 0;
+		}
+	}
+}
+
+.common-checkbox-input {
+	transform: scale(1.33);
+	padding: 0;
 }

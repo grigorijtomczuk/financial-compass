@@ -9,7 +9,7 @@
 			<div class="form__inputs">
 				<input
 					class="form__text-input common-text-input"
-					placeholder="Логин"
+					placeholder="Имя пользователя"
 					type="text"
 					v-model="login"
 					required
@@ -21,9 +21,10 @@
 					v-model="password"
 					required
 				/>
-				<NuxtLink class="form__sign-up-link common-link" to="/auth/sign-up">Регистрация</NuxtLink>
 			</div>
+
 			<button class="form__submit-button common-button" type="submit">Войти</button>
+			<NuxtLink class="form__sign-up-link common-link" to="/auth/sign-up">Регистрация</NuxtLink>
 		</form>
 	</div>
 </template>
@@ -65,24 +66,11 @@
 
 <style scoped lang="scss">
 	.container {
-		z-index: 110;
-		position: relative;
-		background-color: $color-background;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		justify-content: space-evenly;
-		height: 100vh;
-	}
-
-	.container {
-		z-index: 110;
-		position: relative;
-		background-color: $color-background;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: space-evenly;
+		justify-content: center;
+		gap: 16px;
 		height: 100vh;
 	}
 
@@ -114,6 +102,7 @@
 		flex-direction: column;
 		max-width: 260px;
 		width: 100%;
+		flex-basis: 20%;
 
 		&__inputs {
 			width: 100%;
@@ -121,6 +110,7 @@
 			gap: 16px;
 			flex-direction: column;
 			align-items: center;
+			margin-bottom: 32px;
 		}
 
 		&__text-input {
