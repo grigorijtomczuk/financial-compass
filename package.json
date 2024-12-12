@@ -7,7 +7,8 @@
 		"dev": "nuxt dev --host --dotenv .env.development",
 		"generate": "nuxt generate",
 		"postinstall": "nuxt prepare",
-		"preview": "nuxt preview --dotenv .env.development"
+		"preview": "nuxt preview --dotenv .env.development",
+		"prisma:dev": "dotenv -e .env.development -- prisma db push"
 	},
 	"dependencies": {
 		"@prisma/client": "^6.0.1",
@@ -23,6 +24,7 @@
 	},
 	"devDependencies": {
 		"@types/jsonwebtoken": "^9.0.7",
+		"dotenv-cli": "^7.4.4",
 		"prisma": "^6.0.1",
 		"pwa-asset-generator": "^6.4.0",
 		"sass": "^1.81.0",

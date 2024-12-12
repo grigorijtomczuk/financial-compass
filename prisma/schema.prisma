@@ -12,5 +12,17 @@ model User {
     login    String @unique
     password String
 
+    tasks UserTask[]
+
     @@map("user")
+}
+
+model UserTask {
+    id   Int    @id @default(autoincrement())
+    text String
+
+    creatorId Int
+    creator   User @relation(fields: [creatorId], references: [id])
+
+    @@map("user_task")
 }

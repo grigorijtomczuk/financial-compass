@@ -1,19 +1,10 @@
 <template>
-	<AppHeader />
-	<AddEntryButton />
-	<div class="container">
-		<img src="@/assets/images/statistics.png" alt="" draggable="false" />
-	</div>
+	<img src="@/assets/images/statistics.png" alt="" draggable="false" />
 </template>
 
 <script setup lang="ts"></script>
 
 <style scoped lang="scss">
-	.container {
-		width: 90%;
-		margin: 0 auto;
-	}
-
 	h1 {
 		font-weight: 700;
 		font-size: 24px;

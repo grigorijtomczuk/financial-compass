@@ -35,6 +35,7 @@
 
 	.menu-link {
 		color: $color-primary;
+		padding: 0 16px;
 		&__icon {
 			font-size: 32px;
 		}
