@@ -61,6 +61,11 @@ export default defineNuxtConfig({
 					httpOnlyCookieAttribute: process.env.NODE_ENV === "production",
 				},
 			},
+			session: {
+				dataType: {
+					login: "string",
+				},
+			},
 			pages: { login: "/welcome" },
 		},
 	},

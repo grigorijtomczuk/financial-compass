@@ -28,9 +28,10 @@ export default defineEventHandler(async (event) => {
 
 	const expiresIn = "30d";
 	const refreshToken = (Math.floor(Math.random() * (1000000000000000 - 1 + 1)) + 1).toString();
-	const { login } = body;
+
 	const user = {
-		login,
+		id: candidate.id,
+		login: candidate.login,
 	};
 
 	const accessToken = sign(user, SECRET, { expiresIn });

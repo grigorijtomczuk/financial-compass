@@ -16,9 +16,22 @@
 
 	<div class="tasks-tab" v-if="openedTab == 'tasks'">
 		<ol class="task-list">
-			<li class="task-list__item" v-for="(item, index) in ['abc', 'def']" :data-number="index + 1">{{ item }}</li>
+			<li
+				class="task-list__item"
+				v-for="(item, index) in tasks"
+				:data-number="index + 1"
+				@click="submitDeleteUserTask(item.id, index)"
+			>
+				{{ item.text }}
+			</li>
 			<li class="task-list__item" data-number="+">
-				<input class="task-list__item_create common-text-input" type="text" placeholder="Добавить задачу" />
+				<input
+					class="task-list__item_create common-text-input"
+					type="text"
+					placeholder="Добавить задачу"
+					v-model="newUserTask"
+					@keyup="submitCreateUserTask($event)"
+				/>
 			</li>
 		</ol>
 	</div>
@@ -26,6 +39,33 @@
 
 <script setup lang="ts">
 	const openedTab = useState("opened-tab", () => "goals");
+
+	const newUserTask = ref("");
+
+	let { data } = await useFetch("/api/user-task");
+	const tasks = ref(data.value?.tasks);
+
+	const headers = { Authorization: `Bearer ${useCookie("auth.token")!.value}` };
+	const { id: userId } = await $fetch("/api/auth/session", { headers });
+
+	async function submitCreateUserTask(event: KeyboardEvent) {
+		if (event.key == "Enter") {
+			const task = await $fetch("/api/user-task", {
+				method: "post",
+				body: {
+					text: newUserTask.value,
+					creatorId: userId,
+				},
+			});
+			tasks.value?.push(task);
+			newUserTask.value = "";
+		}
+	}
+
+	async function submitDeleteUserTask(id: number, index: number) {
+		await $fetch(`/api/user-task/${id}`, { method: "delete" });
+		tasks.value?.splice(index, 1);
+	}
 </script>
 
 <style scoped lang="scss">
@@ -68,6 +108,8 @@
 		display: flex;
 		flex-direction: column;
 		gap: 16px;
+		overflow: scroll;
+		max-height: 470px;
 
 		&__item {
 			display: flex;

@@ -11,8 +11,8 @@ export const getUserByLogin = async ({ login }: UserLogin) => await prisma.user.
 
 export const getUserTransactions = async ({ id }: UserId) =>
 	await prisma.user.findMany({ where: { id }, include: { transactions: true } });
-export const getUserTasks = async ({ id }: UserId) =>
-	await prisma.user.findMany({ where: { id }, include: { tasks: true } });
+export const getUserUserTasks = async ({ id }: UserId) =>
+	await prisma.user.findUnique({ where: { id }, include: { tasks: true } });
 
 export const createUser = async (data: UserData) => await prisma.user.create({ data });
 

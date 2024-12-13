@@ -34,5 +34,5 @@ const ensureAuth = (event: H3Event) => {
 
 export default defineEventHandler((event) => {
 	const user = ensureAuth(event);
-	return user;
+	return user as { id: number; login: string };
 });
