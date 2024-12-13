@@ -57,3 +57,19 @@ body {
 	transform: scale(1.33);
 	padding: 0;
 }
+
+.common-date-input {
+	border: none;
+	font-size: 16px;
+	font-family: $font-main-normal;
+
+	&::-webkit-calendar-picker-indicator {
+		display: none;
+	}
+}
+
+.common-number-input {
+	border: none;
+	font-size: 16px;
+	font-family: $font-main-normal;
+}

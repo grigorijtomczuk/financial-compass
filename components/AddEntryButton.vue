@@ -1,12 +1,10 @@
 <template>
-	<AddEntryWindow v-if="windowShown" @click="toggleWindow" />
-	<button class="button" @click="toggleWindow">+</button>
+	<button class="button" @touchend="openAddEntryPage">+</button>
 </template>
 
 <script setup lang="ts">
-	const windowShown = ref(false);
-	function toggleWindow() {
-		windowShown.value = !windowShown.value;
+	function openAddEntryPage() {
+		navigateTo("/add-entry");
 	}
 </script>
 
@@ -26,5 +24,11 @@
 		height: auto;
 		font-size: 36px;
 		color: $color-background;
+		box-shadow: $shadow-normal;
+		transition: $transition-normal;
+
+		&:active {
+			transform: scale(0.8);
+		}
 	}
 </style>

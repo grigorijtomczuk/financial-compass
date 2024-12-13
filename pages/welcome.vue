@@ -28,9 +28,6 @@
 
 <style scoped lang="scss">
 	.container {
-		z-index: 110;
-		position: relative;
-		background-color: $color-background;
 		display: flex;
 		flex-direction: column;
 		align-items: center;

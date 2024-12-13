@@ -243,7 +243,7 @@
 
 <script setup lang="ts">
 	import { useToast } from "vue-toastification";
-	import { isEmpty, escape } from "validator";
+	import { isEmpty } from "validator";
 
 	// @ts-ignore
 	import VueBottomSheet from "@webzlodimir/vue-bottom-sheet";

@@ -10,7 +10,7 @@ export const getUserById = async ({ id }: UserId) => await prisma.user.findUniqu
 export const getUserByLogin = async ({ login }: UserLogin) => await prisma.user.findUnique({ where: { login } });
 
 export const getUserTransactions = async ({ id }: UserId) =>
-	await prisma.user.findMany({ where: { id }, include: { transactions: true } });
+	await prisma.user.findUnique({ where: { id }, include: { transactions: true } });
 export const getUserUserTasks = async ({ id }: UserId) =>
 	await prisma.user.findUnique({ where: { id }, include: { tasks: true } });
 
