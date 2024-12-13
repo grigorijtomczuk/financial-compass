@@ -1,4 +1,4 @@
-import { getUserById, updateUserById } from "~/server/db/users";
+import { getUserById, updateUserById } from "~/server/db/user";
 
 import HttpStatusCodes from "http-status-codes";
 

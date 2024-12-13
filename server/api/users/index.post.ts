@@ -1,4 +1,4 @@
-import { type UserData, createUser } from "@/server/db/users";
+import { type UserData, createUser } from "~/server/db/user";
 
 export default defineEventHandler(async (event) => {
 	const data: UserData = await readBody(event);

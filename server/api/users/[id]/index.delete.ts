@@ -1,4 +1,4 @@
-import { deleteUserById, getUserById } from "@/server/db/users";
+import { deleteUserById, getUserById } from "~/server/db/user";
 
 import HttpStatusCodes from "http-status-codes";
 

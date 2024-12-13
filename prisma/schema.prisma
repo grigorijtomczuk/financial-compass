@@ -1,3 +1,5 @@
+// TODO: Map all names to snake_case
+
 generator client {
     provider = "prisma-client-js"
 }
@@ -12,7 +14,8 @@ model User {
     login        String @unique
     passwordHash String
 
-    tasks UserTask[]
+    tasks        UserTask[]
+    transactions Transaction[]
 
     @@map("user")
 }
@@ -25,4 +28,18 @@ model UserTask {
     creator   User @relation(fields: [creatorId], references: [id])
 
     @@map("user_task")
+}
+
+model Transaction {
+    id          Int      @id @default(autoincrement())
+    amount      Decimal
+    date        DateTime @default(now())
+    type        String
+    category    String
+    description String
+
+    creatorId Int
+    creator   User @relation(fields: [creatorId], references: [id])
+
+    @@map("transaction")
 }

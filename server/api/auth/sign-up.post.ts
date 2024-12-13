@@ -1,4 +1,4 @@
-import { createUser, getUserByLogin } from "@/server/db/users";
+import { createUser, getUserByLogin } from "~/server/db/user";
 import { genSalt, hash } from "bcrypt";
 
 import HttpStatusCodes from "http-status-codes";

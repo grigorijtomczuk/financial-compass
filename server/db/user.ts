@@ -9,6 +9,11 @@ export const getUsers = async () => await prisma.user.findMany();
 export const getUserById = async ({ id }: UserId) => await prisma.user.findUnique({ where: { id } });
 export const getUserByLogin = async ({ login }: UserLogin) => await prisma.user.findUnique({ where: { login } });
 
+export const getUserTransactions = async ({ id }: UserId) =>
+	await prisma.user.findMany({ where: { id }, include: { transactions: true } });
+export const getUserTasks = async ({ id }: UserId) =>
+	await prisma.user.findMany({ where: { id }, include: { tasks: true } });
+
 export const createUser = async (data: UserData) => await prisma.user.create({ data });
 
 export const updateUserById = async ({ id, data }: UserId & { data: UserData }) =>

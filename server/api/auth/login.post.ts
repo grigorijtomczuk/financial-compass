@@ -1,6 +1,6 @@
 import HttpStatusCodes from "http-status-codes";
 import { compare } from "bcrypt";
-import { getUserByLogin } from "@/server/db/users";
+import { getUserByLogin } from "~/server/db/user";
 import { sign } from "jsonwebtoken";
 
 const refreshTokens: Record<string, Record<string, any>> = {};
