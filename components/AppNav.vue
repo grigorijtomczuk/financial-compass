@@ -4,7 +4,7 @@
 			<NuxtLink class="menu-link" to="/">
 				<IconHome class="menu-link__icon" />
 			</NuxtLink>
-			<NuxtLink class="menu-link" to="/goals">
+			<NuxtLink class="menu-link" to="/tasks">
 				<IconChartBar class="menu-link__icon" />
 			</NuxtLink>
 			<NuxtLink class="menu-link" to="/statistics">
