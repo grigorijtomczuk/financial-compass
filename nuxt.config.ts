@@ -49,7 +49,9 @@ export default defineNuxtConfig({
 				signInResponseTokenPointer: "/token/accessToken",
 				maxAgeInSeconds: 60 * 60 * 24 * 30,
 				secureCookieAttribute: process.env.NODE_ENV === "production",
-				httpOnlyCookieAttribute: process.env.NODE_ENV === "production",
+				// https://github.com/sidebase/nuxt-auth/issues/938
+				// https://github.com/sidebase/nuxt-auth/issues/851
+				// httpOnlyCookieAttribute: process.env.NODE_ENV === "production",
 			},
 			refresh: {
 				isEnabled: false,
@@ -58,7 +60,7 @@ export default defineNuxtConfig({
 					maxAgeInSeconds: 60 * 60 * 24 * 1,
 					// maxAgeInSeconds: 5,
 					secureCookieAttribute: process.env.NODE_ENV === "production",
-					httpOnlyCookieAttribute: process.env.NODE_ENV === "production",
+					// httpOnlyCookieAttribute: process.env.NODE_ENV === "production",
 				},
 			},
 			session: {
